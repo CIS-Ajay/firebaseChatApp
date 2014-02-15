@@ -1,0 +1,32 @@
+<div>
+  <h3>Sign Up</h3>
+   <span class="label label-default">Name</span></br>
+   <input type="text" class="form-control" ng-model="name"></div></br></br></br>
+   <span class="label label-default">Email</span></br>
+   <input type="text" class="form-control" ng-model="email"></br></br></br>
+   <span class="label label-default">Passowrd</span></br>
+   <input type="text" class="form-control" ng-model="passpwrd"></br></br></br>
+   <span class="label label-default" ng-model="con_pass">Confirm your password</span></br>
+   <input type="text" class="form-control"></br></br></br></br>
+   <button  class="btn btn-success"  ng-click="addPerson()">Sign Up</button></br></br></br></br></br></br></br></br>
+</div>
+<script>
+function addPerson($scope, $firebase) {
+  console.log("dfgsdfgd");
+  var peopleRef = new Firebase("https://myappvivek.firebaseIO.com/");
+  $scope.people = $firebase(peopleRef);
+  $scope.addPerson = function() {
+    // AngularFire $add method
+    $scope.people.$add($scope.newPerson);
+    //or add a new person manually
+    peopleRef.update({name: 'Alex', age: 35});
+     
+    $scope.newPerson = "";
+  }
+}
+</script>
+<style>
+	.form-control{
+		width: 400px;
+	}
+</style>
